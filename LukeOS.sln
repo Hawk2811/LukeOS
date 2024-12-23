@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BootManager", "BootManager\BootManager.vbproj", "{C6981D3C-EA30-4488-B314-BFE1508D0076}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SystemDesktop", "SystemDesktop\SystemDesktop.vbproj", "{6EBA2281-3772-4C6D-8063-018DE5E90F6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C6981D3C-EA30-4488-B314-BFE1508D0076}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6981D3C-EA30-4488-B314-BFE1508D0076}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6981D3C-EA30-4488-B314-BFE1508D0076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EBA2281-3772-4C6D-8063-018DE5E90F6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EBA2281-3772-4C6D-8063-018DE5E90F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EBA2281-3772-4C6D-8063-018DE5E90F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EBA2281-3772-4C6D-8063-018DE5E90F6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
