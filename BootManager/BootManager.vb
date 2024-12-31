@@ -1,6 +1,4 @@
-﻿Imports System.IO
-
-Public Class BootManager
+﻿Public Class BootManager
 
     Dim TimerTick As Integer = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
