@@ -2,22 +2,9 @@
 
 Module ProgramMain
     Dim RelDebug As String = "1"
-    Dim MSBuildPath As String = "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin"
-    Dim MSBuildYN As String = "N"
     Dim ProjectDirectory As String
     Sub Main()
-        Console.WriteLine("Do you want to change the MSBuild path? (y/n)(Default is N)")
-        MSBuildYN = Console.ReadLine()
-        If MSBuildYN = "N" Then
-            Console.WriteLine("Continuing with Default Path")
-        ElseIf MSBuildYN = "n" Then
-            Console.WriteLine("Continuing with Default Path")
-        ElseIf MSBuildYN = "Y" Then
-            Call ChangeMSBuildPath()
-        ElseIf MSBuildYN = "y" Then
-        Else
-            Console.WriteLine("Continuing with Default Path")
-        End If
+
         Call SetProjectDirectory()
         Console.WriteLine("This build is a Release or Debug ?")
         Console.WriteLine("Default is Debug")
@@ -26,38 +13,70 @@ Module ProgramMain
         Console.WriteLine("2 - Release")
         RelDebug = Console.ReadLine()
         If RelDebug = "1" Then
-            Call BuildDebug(MSBuildPath)
+            Call BuildDebug()
         ElseIf RelDebug = "2" Then
-            Call BuildRelease(MSBuildPath)
+            Call BuildRelease()
         Else
-            Call BuildDebug(MSBuildPath)
+            Call BuildDebug()
         End If
     End Sub
 
-    Public Sub BuildDebug(ByVal PathMSBuild As String)
+    Public Sub BuildDebug()
         Console.WriteLine("Building Debug")
         Try
             If Directory.Exists(ProjectDirectory + "\Build") Then
                 Directory.Delete(ProjectDirectory + "\Build", True)
+            Else
+                Console.WriteLine("No Other Build Detected!")
             End If
-        Catch ex As Exception
+            Directory.CreateDirectory(ProjectDirectory + "\Build")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Debug")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Debug\System")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Debug\System\Boot")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Debug\System\Boot\Drivers")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Debug\Apps")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Debug\User")
+            File.Copy(ProjectDirectory + "\BootManager\bin\Debug\BootManager.exe", ProjectDirectory + "\Build\Debug\System\Boot\BootManager.exe")
+            File.Copy(ProjectDirectory + "\SystemDesktop\bin\Debug\SystemDesktop.exe", ProjectDirectory + "\Build\Debug\System\SystemDesktop.exe")
 
+            Console.WriteLine("Build Success!")
+            Console.ReadLine()
+        Catch ex As Exception
+            Console.WriteLine("Error on Build LukeOS: " + ex.Message)
+            Console.WriteLine("Try Build Solution in Visual Studio")
+            Console.ReadLine()
         End Try
 
     End Sub
 
-    Public Sub BuildRelease(ByVal PathMSBuild As String)
+    Public Sub BuildRelease()
         Console.WriteLine("Building Release")
-    End Sub
-
-    Public Sub ChangeMSBuildPath()
-        Console.WriteLine("Enter the Path to MSBuild")
-        MSBuildPath = Console.ReadLine()
-        Console.WriteLine("Continuing with Path: " + MSBuildPath)
+        Try
+            If Directory.Exists(ProjectDirectory + "\Build") Then
+                Directory.Delete(ProjectDirectory + "\Build", True)
+            Else
+                Console.WriteLine("No Other Build Detected!")
+            End If
+            Directory.CreateDirectory(ProjectDirectory + "\Build")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Release")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Release\System")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Release\System\Boot")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Release\System\Boot\Drivers")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Release\Apps")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Release\User")
+            File.Copy(ProjectDirectory + "\BootManager\bin\Release\BootManager.exe", ProjectDirectory + "\Build\Release\System\Boot\BootManager.exe")
+            File.Copy(ProjectDirectory + "\SystemDesktop\bin\Release\SystemDesktop.exe", ProjectDirectory + "\Build\Release\System\SystemDesktop.exe")
+            Console.WriteLine("Build Success!")
+            Console.ReadLine()
+        Catch ex As Exception
+            Console.WriteLine("Error on build LukeOS: " + ex.Message)
+            Console.WriteLine("Try Build Solution in Visual Studio")
+            Console.ReadLine()
+        End Try
     End Sub
 
     Public Sub SetProjectDirectory()
-        Dim X As Integer = 0
+        Dim X As Integer = 1
         While X = 1
             Console.WriteLine("Where are the project files?")
             ProjectDirectory = Console.ReadLine()
@@ -65,7 +84,7 @@ Module ProgramMain
                 Console.WriteLine("Please Select a Path")
             Else
                 Console.WriteLine("Continuing with " + ProjectDirectory)
-                X = 1
+                X = 0
             End If
         End While
 
