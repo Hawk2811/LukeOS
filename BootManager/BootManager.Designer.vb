@@ -24,9 +24,9 @@ Partial Class BootManager
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.lbl_Drivers = New System.Windows.Forms.Label()
+        Me.lbl_ReadyOrError = New System.Windows.Forms.Label()
+        Me.BootTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'Label1
@@ -40,44 +40,44 @@ Partial Class BootManager
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "LukeOS"
         '
-        'Label2
+        'lbl_Drivers
         '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 393)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(147, 24)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Drivers Loaded !"
-        Me.Label2.Visible = False
+        Me.lbl_Drivers.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lbl_Drivers.AutoSize = True
+        Me.lbl_Drivers.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Drivers.Location = New System.Drawing.Point(12, 393)
+        Me.lbl_Drivers.Name = "lbl_Drivers"
+        Me.lbl_Drivers.Size = New System.Drawing.Size(147, 24)
+        Me.lbl_Drivers.TabIndex = 1
+        Me.lbl_Drivers.Text = "Drivers Loaded !"
+        Me.lbl_Drivers.Visible = False
         '
-        'Label3
+        'lbl_ReadyOrError
         '
-        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(12, 417)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(74, 24)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Ready !"
-        Me.Label3.Visible = False
+        Me.lbl_ReadyOrError.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lbl_ReadyOrError.AutoSize = True
+        Me.lbl_ReadyOrError.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_ReadyOrError.Location = New System.Drawing.Point(12, 417)
+        Me.lbl_ReadyOrError.Name = "lbl_ReadyOrError"
+        Me.lbl_ReadyOrError.Size = New System.Drawing.Size(74, 24)
+        Me.lbl_ReadyOrError.TabIndex = 2
+        Me.lbl_ReadyOrError.Text = "Ready !"
+        Me.lbl_ReadyOrError.Visible = False
         '
-        'Timer1
+        'BootTimer
         '
-        Me.Timer1.Interval = 1000
+        Me.BootTimer.Interval = 1000
         '
-        'Form1
+        'BootManager
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.lbl_ReadyOrError)
+        Me.Controls.Add(Me.lbl_Drivers)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "Form1"
+        Me.Name = "BootManager"
         Me.Text = "LukeOS Boot Manager"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
@@ -86,7 +86,7 @@ Partial Class BootManager
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Timer1 As Timer
+    Friend WithEvents lbl_Drivers As Label
+    Friend WithEvents lbl_ReadyOrError As Label
+    Friend WithEvents BootTimer As Timer
 End Class

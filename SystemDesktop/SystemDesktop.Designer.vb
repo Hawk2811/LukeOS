@@ -22,60 +22,157 @@ Partial Class SystemDesktop
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SystemDesktop))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btn_Shutdown = New System.Windows.Forms.PictureBox()
+        Me.lbl_Time = New System.Windows.Forms.Label()
+        Me.btnApps = New System.Windows.Forms.Button()
+        Me.App_Panel = New System.Windows.Forms.Panel()
+        Me.btn_About = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.AppList = New System.Windows.Forms.ListView()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.ClockTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.AppList_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
+        CType(Me.btn_Shutdown, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.App_Panel.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.btn_Shutdown)
+        Me.Panel1.Controls.Add(Me.lbl_Time)
+        Me.Panel1.Controls.Add(Me.btnApps)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 403)
+        Me.Panel1.Location = New System.Drawing.Point(0, 516)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(800, 47)
+        Me.Panel1.Size = New System.Drawing.Size(990, 38)
         Me.Panel1.TabIndex = 0
         '
-        'Button1
+        'btn_Shutdown
         '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(12, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Menu"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btn_Shutdown.Image = Global.SystemDesktop.My.Resources.Resources._1492790919_81power_84209
+        Me.btn_Shutdown.Location = New System.Drawing.Point(4, 4)
+        Me.btn_Shutdown.Name = "btn_Shutdown"
+        Me.btn_Shutdown.Size = New System.Drawing.Size(41, 32)
+        Me.btn_Shutdown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.btn_Shutdown.TabIndex = 2
+        Me.btn_Shutdown.TabStop = False
         '
-        'Panel2
+        'lbl_Time
         '
-        Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.Location = New System.Drawing.Point(0, 126)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(320, 283)
-        Me.Panel2.TabIndex = 1
-        Me.Panel2.Visible = False
+        Me.lbl_Time.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_Time.AutoSize = True
+        Me.lbl_Time.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Time.Location = New System.Drawing.Point(922, 11)
+        Me.lbl_Time.Name = "lbl_Time"
+        Me.lbl_Time.Size = New System.Drawing.Size(48, 18)
+        Me.lbl_Time.TabIndex = 1
+        Me.lbl_Time.Text = "00:00"
+        '
+        'btnApps
+        '
+        Me.btnApps.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btnApps.Location = New System.Drawing.Point(442, 6)
+        Me.btnApps.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnApps.Name = "btnApps"
+        Me.btnApps.Size = New System.Drawing.Size(110, 30)
+        Me.btnApps.TabIndex = 0
+        Me.btnApps.Text = "Apps"
+        Me.btnApps.UseVisualStyleBackColor = True
+        '
+        'App_Panel
+        '
+        Me.App_Panel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.App_Panel.BackColor = System.Drawing.Color.White
+        Me.App_Panel.Controls.Add(Me.btn_About)
+        Me.App_Panel.Controls.Add(Me.Label1)
+        Me.App_Panel.Controls.Add(Me.AppList)
+        Me.App_Panel.Location = New System.Drawing.Point(276, 182)
+        Me.App_Panel.Margin = New System.Windows.Forms.Padding(2)
+        Me.App_Panel.Name = "App_Panel"
+        Me.App_Panel.Size = New System.Drawing.Size(427, 338)
+        Me.App_Panel.TabIndex = 1
+        Me.App_Panel.Visible = False
+        '
+        'btn_About
+        '
+        Me.btn_About.Location = New System.Drawing.Point(379, 14)
+        Me.btn_About.Name = "btn_About"
+        Me.btn_About.Size = New System.Drawing.Size(45, 23)
+        Me.btn_About.TabIndex = 2
+        Me.btn_About.Text = "About"
+        Me.btn_About.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(3, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(55, 22)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Apps"
+        '
+        'AppList
+        '
+        Me.AppList.HideSelection = False
+        Me.AppList.LargeImageList = Me.ImageList1
+        Me.AppList.Location = New System.Drawing.Point(3, 43)
+        Me.AppList.Name = "AppList"
+        Me.AppList.Size = New System.Drawing.Size(421, 292)
+        Me.AppList.SmallImageList = Me.ImageList1
+        Me.AppList.TabIndex = 0
+        Me.AppList.UseCompatibleStateImageBehavior = False
+        '
+        'ImageList1
+        '
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "file-exe-icon_34440.png")
+        '
+        'ClockTimer
+        '
+        '
+        'AppList_Timer
+        '
+        Me.AppList_Timer.Interval = 2000
         '
         'SystemDesktop
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.Panel2)
+        Me.ClientSize = New System.Drawing.Size(990, 554)
+        Me.Controls.Add(Me.App_Panel)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "SystemDesktop"
         Me.Text = "LukeOS"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.btn_Shutdown, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.App_Panel.ResumeLayout(False)
+        Me.App_Panel.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Panel2 As Panel
+    Friend WithEvents btnApps As Button
+    Friend WithEvents App_Panel As Panel
+    Friend WithEvents lbl_Time As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents AppList As ListView
+    Friend WithEvents ClockTimer As Timer
+    Friend WithEvents AppList_Timer As Timer
+    Friend WithEvents btn_About As Button
+    Friend WithEvents btn_Shutdown As PictureBox
+    Friend WithEvents ImageList1 As ImageList
 End Class

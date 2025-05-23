@@ -1,4 +1,8 @@
-﻿Imports System.IO
+﻿' 
+'   LukeOS BuildSystem
+'   Program to create a usable LukeOS Root Filesystem
+'
+Imports System.IO
 
 Module ProgramMain
     Dim RelDebug As String = "1"
@@ -11,6 +15,7 @@ Module ProgramMain
         Console.WriteLine("")
         Console.WriteLine("1 - Debug")
         Console.WriteLine("2 - Release")
+        Console.Write(": ")
         RelDebug = Console.ReadLine()
         If RelDebug = "1" Then
             Call BuildDebug()
@@ -79,6 +84,7 @@ Module ProgramMain
         Dim X As Integer = 1
         While X = 1
             Console.WriteLine("Where are the project files?")
+            Console.Write(": ")
             ProjectDirectory = Console.ReadLine()
             If ProjectDirectory = "" Then
                 Console.WriteLine("Please Select a Path")
@@ -87,8 +93,5 @@ Module ProgramMain
                 X = 0
             End If
         End While
-
-
-
     End Sub
 End Module
