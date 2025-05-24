@@ -9,6 +9,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SystemDesktop", "SystemDesk
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BuildSystem", "BuildSystem\BuildSystem.vbproj", "{FBC2C815-DEE0-413F-A464-2803544946A6}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "File Manager", "File Manager\File Manager.vbproj", "{0A6895E7-366B-450B-A796-27B530B2FC6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FBC2C815-DEE0-413F-A464-2803544946A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBC2C815-DEE0-413F-A464-2803544946A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBC2C815-DEE0-413F-A464-2803544946A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A6895E7-366B-450B-A796-27B530B2FC6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6895E7-366B-450B-A796-27B530B2FC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6895E7-366B-450B-A796-27B530B2FC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6895E7-366B-450B-A796-27B530B2FC6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

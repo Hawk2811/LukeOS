@@ -41,8 +41,11 @@ Module ProgramMain
             Directory.CreateDirectory(ProjectDirectory + "\Build\Debug\System\Boot\Drivers")
             Directory.CreateDirectory(ProjectDirectory + "\Build\Debug\Apps")
             Directory.CreateDirectory(ProjectDirectory + "\Build\Debug\User")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Debug\Temp")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Debug\Apps\File Manager")
             File.Copy(ProjectDirectory + "\BootManager\bin\Debug\BootManager.exe", ProjectDirectory + "\Build\Debug\System\Boot\BootManager.exe")
             File.Copy(ProjectDirectory + "\SystemDesktop\bin\Debug\SystemDesktop.exe", ProjectDirectory + "\Build\Debug\System\SystemDesktop.exe")
+            File.Copy(ProjectDirectory + "\File Manager\bin\Debug\File Manager.exe", ProjectDirectory + "\Build\Debug\Apps\File Manager\File Manager.exe")
 
             Console.WriteLine("Build Success!")
             Console.ReadLine()
@@ -69,8 +72,11 @@ Module ProgramMain
             Directory.CreateDirectory(ProjectDirectory + "\Build\Release\System\Boot\Drivers")
             Directory.CreateDirectory(ProjectDirectory + "\Build\Release\Apps")
             Directory.CreateDirectory(ProjectDirectory + "\Build\Release\User")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Release\Temp")
+            Directory.CreateDirectory(ProjectDirectory + "\Build\Release\Apps\File Manager")
             File.Copy(ProjectDirectory + "\BootManager\bin\Release\BootManager.exe", ProjectDirectory + "\Build\Release\System\Boot\BootManager.exe")
             File.Copy(ProjectDirectory + "\SystemDesktop\bin\Release\SystemDesktop.exe", ProjectDirectory + "\Build\Release\System\SystemDesktop.exe")
+            File.Copy(ProjectDirectory + "\File Manager\bin\Release\File Manager.exe", ProjectDirectory + "\Build\Release\Apps\File Manager\File Manager.exe")
             Console.WriteLine("Build Success!")
             Console.ReadLine()
         Catch ex As Exception

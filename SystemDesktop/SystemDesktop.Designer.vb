@@ -42,7 +42,7 @@ Partial Class SystemDesktop
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.BackColor = System.Drawing.Color.DodgerBlue
         Me.Panel1.Controls.Add(Me.btn_Shutdown)
         Me.Panel1.Controls.Add(Me.lbl_Time)
         Me.Panel1.Controls.Add(Me.btnApps)
@@ -67,28 +67,33 @@ Partial Class SystemDesktop
         '
         Me.lbl_Time.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_Time.AutoSize = True
-        Me.lbl_Time.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Time.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Time.ForeColor = System.Drawing.Color.White
         Me.lbl_Time.Location = New System.Drawing.Point(922, 11)
         Me.lbl_Time.Name = "lbl_Time"
-        Me.lbl_Time.Size = New System.Drawing.Size(48, 18)
+        Me.lbl_Time.Size = New System.Drawing.Size(49, 21)
         Me.lbl_Time.TabIndex = 1
         Me.lbl_Time.Text = "00:00"
         '
         'btnApps
         '
         Me.btnApps.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btnApps.BackColor = System.Drawing.Color.RoyalBlue
+        Me.btnApps.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnApps.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnApps.ForeColor = System.Drawing.Color.White
         Me.btnApps.Location = New System.Drawing.Point(442, 6)
         Me.btnApps.Margin = New System.Windows.Forms.Padding(2)
         Me.btnApps.Name = "btnApps"
         Me.btnApps.Size = New System.Drawing.Size(110, 30)
         Me.btnApps.TabIndex = 0
         Me.btnApps.Text = "Apps"
-        Me.btnApps.UseVisualStyleBackColor = True
+        Me.btnApps.UseVisualStyleBackColor = False
         '
         'App_Panel
         '
         Me.App_Panel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.App_Panel.BackColor = System.Drawing.Color.White
+        Me.App_Panel.BackColor = System.Drawing.Color.DodgerBlue
         Me.App_Panel.Controls.Add(Me.btn_About)
         Me.App_Panel.Controls.Add(Me.Label1)
         Me.App_Panel.Controls.Add(Me.AppList)
@@ -101,25 +106,31 @@ Partial Class SystemDesktop
         '
         'btn_About
         '
-        Me.btn_About.Location = New System.Drawing.Point(379, 14)
+        Me.btn_About.BackColor = System.Drawing.Color.RoyalBlue
+        Me.btn_About.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_About.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_About.ForeColor = System.Drawing.Color.White
+        Me.btn_About.Location = New System.Drawing.Point(367, 14)
         Me.btn_About.Name = "btn_About"
-        Me.btn_About.Size = New System.Drawing.Size(45, 23)
+        Me.btn_About.Size = New System.Drawing.Size(57, 23)
         Me.btn_About.TabIndex = 2
         Me.btn_About.Text = "About"
-        Me.btn_About.UseVisualStyleBackColor = True
+        Me.btn_About.UseVisualStyleBackColor = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(3, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(55, 22)
+        Me.Label1.Size = New System.Drawing.Size(54, 25)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Apps"
         '
         'AppList
         '
+        Me.AppList.BackColor = System.Drawing.Color.Cyan
         Me.AppList.HideSelection = False
         Me.AppList.LargeImageList = Me.ImageList1
         Me.AppList.Location = New System.Drawing.Point(3, 43)
