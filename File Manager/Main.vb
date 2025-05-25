@@ -126,6 +126,38 @@ Public Class Main
     End Sub
 
     Private Sub FileView_DoubleClick(sender As Object, e As EventArgs) Handles FileView.DoubleClick
+        OpenDirFile()
+    End Sub
+
+    Private Sub btnUp_Click(sender As Object, e As EventArgs) Handles btnUp.Click
+        UpFolder()
+    End Sub
+
+    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
+        OpenDirFile()
+    End Sub
+
+    Private Sub UpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpToolStripMenuItem.Click
+        UpFolder()
+    End Sub
+
+    Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub CutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
+
+    End Sub
+
+    Public Sub OpenDirFile()
         Try
             If IO.Directory.Exists(dirURL.Text + "\" + FileView.SelectedItems(0).Text) = True Then
                 dirURL.Text = dirURL.Text + "\" + FileView.SelectedItems(0).Text
@@ -140,15 +172,31 @@ Public Class Main
             End If
 
             If IO.File.Exists(dirURL.Text + "\" + FileView.SelectedItems(0).Text) Then
-
-            End If
+                Dim Ext As String = IO.Path.GetExtension(dirURL.Text + "\" + FileView.SelectedItems(0).Text)
+                If Ext = ".exe" Then
+                    Process.Start(dirURL.Text + "\" + FileView.SelectedItems(0).Text)
+                ElseIf Ext = ".bat" Then
+                    Process.Start(dirURL.Text + "\" + FileView.SelectedItems(0).Text)
+                ElseIf Ext = ".cmd" Then
+                    Process.Start(dirURL.Text + "\" + FileView.SelectedItems(0).Text)
+                Else
+                    If IO.File.Exists(rootfs + "\System\Config\Ext\" + Ext) Then
+                        Dim ConfigFile As String = My.Computer.FileSystem.ReadAllText(rootfs + "\System\Config\Ext\" + Ext)
+                        MessageBox.Show(ConfigFile, FileView.SelectedItems(0).Text)
+                        Process.Start(ConfigFile, dirURL.Text + "\" + FileView.SelectedItems(0).Text)
+                    Else
+                        OpenWith.File = dirURL.Text + "\" + FileView.SelectedItems(0).Text
+                        OpenWith.rootfs = rootfs
+                        OpenWith.ShowDialog()
+                    End If
+                End If
+                End If
         Catch ex As Exception
             errors = errors + vbNewLine + ex.Message
             My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + "\APP.log", errors, False)
         End Try
     End Sub
-
-    Private Sub btnUp_Click(sender As Object, e As EventArgs) Handles btnUp.Click
+    Public Sub UpFolder()
         Try
             If IO.Directory.Exists(My.Computer.FileSystem.GetParentPath(dirURL.Text)) = True Then
 
@@ -167,4 +215,6 @@ Public Class Main
             My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + "\APP.log", errors, False)
         End Try
     End Sub
+
+
 End Class

@@ -54,9 +54,18 @@ Public Class SystemDesktop
 
     Private Sub AppList_DoubleClick(sender As Object, e As EventArgs) Handles AppList.DoubleClick
         Try
-            Process.Start(Application_dir + "\" + AppList.SelectedItems(0).Text + "\" + AppList.SelectedItems(0).Text + ".exe") 'Try Start Executable inside of Folder 
-        Catch ex As Exception
-            MessageBox.Show("Failed to Start App: Is not valid LukeOS Application", "System Error") ' If fail show a error Message
+            'Try Start Executable inside of Folder 
+            If File.Exists(Application_dir + "\" + AppList.SelectedItems(0).Text + "\" + AppList.SelectedItems(0).Text + ".exe") Then
+                Process.Start(Application_dir + "\" + AppList.SelectedItems(0).Text + "\" + AppList.SelectedItems(0).Text + ".exe")
+            ElseIf File.Exists(Application_dir + "\" + AppList.SelectedItems(0).Text + "\" + AppList.SelectedItems(0).Text + ".bat") Then
+                Process.Start(Application_dir + "\" + AppList.SelectedItems(0).Text + "\" + AppList.SelectedItems(0).Text + ".bat")
+            ElseIf File.Exists(Application_dir + "\" + AppList.SelectedItems(0).Text + "\" + AppList.SelectedItems(0).Text + ".cmd") Then
+                Process.Start(Application_dir + "\" + AppList.SelectedItems(0).Text + "\" + AppList.SelectedItems(0).Text + ".cmd")
+            Else
+                MessageBox.Show("Failed to Start App: Is not valid LukeOS Application", "System Error") ' If fail show a error Message
+            End If
+        Catch ex As Exception 'If Cause unknown error
+            MessageBox.Show("Failed to Start App: " + ex.Message, "System Error")
         End Try
     End Sub
 End Class
