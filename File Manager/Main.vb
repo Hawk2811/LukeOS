@@ -1,6 +1,4 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-
-Public Class Main
+﻿Public Class Main
     Dim drag As Boolean
     Dim mousex As Integer
     Dim mousey As Integer
@@ -244,7 +242,7 @@ Public Class Main
                         OpenWith.ShowDialog()
                     End If
                 End If
-                End If
+            End If
         Catch ex As Exception
             errors = errors + vbNewLine + ex.Message
             My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + "\APP.log", errors, False)
