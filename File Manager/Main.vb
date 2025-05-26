@@ -137,6 +137,16 @@ Public Class Main
         OpenDirFile()
     End Sub
 
+    Private Sub OpenWithToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenWithToolStripMenuItem.Click
+        If IO.Directory.Exists(dirURL.Text + "\" + FileView.SelectedItems(0).Text) Then
+            MessageBox.Show("This is a Directory", "System Error")
+        Else
+            OpenWith.File = dirURL.Text + "\" + FileView.SelectedItems(0).Text
+            OpenWith.rootfs = rootfs
+            OpenWith.ShowDialog()
+        End If
+    End Sub
+
     Private Sub UpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpToolStripMenuItem.Click
         UpFolder()
     End Sub
@@ -182,7 +192,6 @@ Public Class Main
                 Else
                     If IO.File.Exists(rootfs + "\System\Config\Ext\" + Ext) Then
                         Dim ConfigFile As String = My.Computer.FileSystem.ReadAllText(rootfs + "\System\Config\Ext\" + Ext)
-                        MessageBox.Show(ConfigFile, FileView.SelectedItems(0).Text)
                         Process.Start(ConfigFile, dirURL.Text + "\" + FileView.SelectedItems(0).Text)
                     Else
                         OpenWith.File = dirURL.Text + "\" + FileView.SelectedItems(0).Text
@@ -215,6 +224,5 @@ Public Class Main
             My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + "\APP.log", errors, False)
         End Try
     End Sub
-
 
 End Class

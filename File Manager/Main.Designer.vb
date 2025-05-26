@@ -36,17 +36,18 @@ Partial Class Main
         Me.btnUp = New System.Windows.Forms.Button()
         Me.btnGo = New System.Windows.Forms.Button()
         Me.FileView = New System.Windows.Forms.ListView()
-        Me.DiskView = New System.Windows.Forms.ListView()
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.FileOperation = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PasteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.CutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PasteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.DiskView = New System.Windows.Forms.ListView()
+        Me.OpenWithToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.FileOperation.SuspendLayout()
         Me.SuspendLayout()
@@ -182,32 +183,11 @@ Partial Class Main
         Me.FileView.TabIndex = 9
         Me.FileView.UseCompatibleStateImageBehavior = False
         '
-        'DiskView
-        '
-        Me.DiskView.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.DiskView.HideSelection = False
-        Me.DiskView.LargeImageList = Me.ImageList1
-        Me.DiskView.Location = New System.Drawing.Point(21, 82)
-        Me.DiskView.Name = "DiskView"
-        Me.DiskView.Size = New System.Drawing.Size(153, 453)
-        Me.DiskView.SmallImageList = Me.ImageList1
-        Me.DiskView.TabIndex = 10
-        Me.DiskView.UseCompatibleStateImageBehavior = False
-        '
-        'ImageList1
-        '
-        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "textxgeneric_92794.png")
-        Me.ImageList1.Images.SetKeyName(1, "folderblue_92960.png")
-        Me.ImageList1.Images.SetKeyName(2, "hd_disk_harddisk_162.png")
-        '
         'FileOperation
         '
-        Me.FileOperation.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.UpToolStripMenuItem, Me.ToolStripSeparator1, Me.CopyToolStripMenuItem, Me.CutToolStripMenuItem, Me.PasteToolStripMenuItem, Me.ToolStripSeparator2, Me.DeleteToolStripMenuItem})
+        Me.FileOperation.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.OpenWithToolStripMenuItem, Me.UpToolStripMenuItem, Me.ToolStripSeparator1, Me.CopyToolStripMenuItem, Me.CutToolStripMenuItem, Me.PasteToolStripMenuItem, Me.ToolStripSeparator2, Me.DeleteToolStripMenuItem})
         Me.FileOperation.Name = "FileOperation"
-        Me.FileOperation.Size = New System.Drawing.Size(108, 148)
+        Me.FileOperation.Size = New System.Drawing.Size(181, 192)
         '
         'OpenToolStripMenuItem
         '
@@ -232,11 +212,22 @@ Partial Class Main
         Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CopyToolStripMenuItem.Text = "Copy"
         '
+        'CutToolStripMenuItem
+        '
+        Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
+        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CutToolStripMenuItem.Text = "Cut"
+        '
         'PasteToolStripMenuItem
         '
         Me.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem"
         Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.PasteToolStripMenuItem.Text = "Paste"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
         '
         'DeleteToolStripMenuItem
         '
@@ -244,16 +235,32 @@ Partial Class Main
         Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
-        'ToolStripSeparator2
+        'ImageList1
         '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "textxgeneric_92794.png")
+        Me.ImageList1.Images.SetKeyName(1, "folderblue_92960.png")
+        Me.ImageList1.Images.SetKeyName(2, "hd_disk_harddisk_162.png")
         '
-        'CutToolStripMenuItem
+        'DiskView
         '
-        Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
-        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.CutToolStripMenuItem.Text = "Cut"
+        Me.DiskView.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.DiskView.HideSelection = False
+        Me.DiskView.LargeImageList = Me.ImageList1
+        Me.DiskView.Location = New System.Drawing.Point(21, 82)
+        Me.DiskView.Name = "DiskView"
+        Me.DiskView.Size = New System.Drawing.Size(153, 453)
+        Me.DiskView.SmallImageList = Me.ImageList1
+        Me.DiskView.TabIndex = 10
+        Me.DiskView.UseCompatibleStateImageBehavior = False
+        '
+        'OpenWithToolStripMenuItem
+        '
+        Me.OpenWithToolStripMenuItem.Name = "OpenWithToolStripMenuItem"
+        Me.OpenWithToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenWithToolStripMenuItem.Text = "Open With"
         '
         'Main
         '
@@ -305,4 +312,5 @@ Partial Class Main
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents DeleteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenWithToolStripMenuItem As ToolStripMenuItem
 End Class

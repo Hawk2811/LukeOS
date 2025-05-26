@@ -23,7 +23,7 @@
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-        Application.Exit()
+        Me.Close()
     End Sub
 
     Private Sub btnOpen_Click(sender As Object, e As EventArgs) Handles btnOpen.Click
@@ -31,9 +31,12 @@
             Dim Ext As String = IO.Path.GetExtension(File)
             My.Computer.FileSystem.WriteAllText(rootfs + "\System\Config\Ext\" + Ext, AppURL.Text, True)
             Process.Start(AppURL.Text, File)
+            AppURL.Text = ""
+            SaveCheck.Checked = False
             Me.Close()
         Else
             Process.Start(AppURL.Text, File)
+            AppURL.Text = ""
             Me.Close()
         End If
     End Sub
