@@ -38,6 +38,7 @@ Partial Class Main
         Me.FileView = New System.Windows.Forms.ListView()
         Me.FileOperation = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenWithToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -47,7 +48,8 @@ Partial Class Main
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.DiskView = New System.Windows.Forms.ListView()
-        Me.OpenWithToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ObjName = New System.Windows.Forms.TextBox()
+        Me.OpSrc = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.FileOperation.SuspendLayout()
         Me.SuspendLayout()
@@ -187,52 +189,58 @@ Partial Class Main
         '
         Me.FileOperation.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.OpenWithToolStripMenuItem, Me.UpToolStripMenuItem, Me.ToolStripSeparator1, Me.CopyToolStripMenuItem, Me.CutToolStripMenuItem, Me.PasteToolStripMenuItem, Me.ToolStripSeparator2, Me.DeleteToolStripMenuItem})
         Me.FileOperation.Name = "FileOperation"
-        Me.FileOperation.Size = New System.Drawing.Size(181, 192)
+        Me.FileOperation.Size = New System.Drawing.Size(132, 170)
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
+        '
+        'OpenWithToolStripMenuItem
+        '
+        Me.OpenWithToolStripMenuItem.Name = "OpenWithToolStripMenuItem"
+        Me.OpenWithToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.OpenWithToolStripMenuItem.Text = "Open With"
         '
         'UpToolStripMenuItem
         '
         Me.UpToolStripMenuItem.Name = "UpToolStripMenuItem"
-        Me.UpToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UpToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.UpToolStripMenuItem.Text = "Up"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(128, 6)
         '
         'CopyToolStripMenuItem
         '
         Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
-        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.CopyToolStripMenuItem.Text = "Copy"
         '
         'CutToolStripMenuItem
         '
         Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
-        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.CutToolStripMenuItem.Text = "Cut"
         '
         'PasteToolStripMenuItem
         '
         Me.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem"
-        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.PasteToolStripMenuItem.Text = "Paste"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(128, 6)
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'ImageList1
@@ -256,17 +264,29 @@ Partial Class Main
         Me.DiskView.TabIndex = 10
         Me.DiskView.UseCompatibleStateImageBehavior = False
         '
-        'OpenWithToolStripMenuItem
+        'ObjName
         '
-        Me.OpenWithToolStripMenuItem.Name = "OpenWithToolStripMenuItem"
-        Me.OpenWithToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.OpenWithToolStripMenuItem.Text = "Open With"
+        Me.ObjName.Location = New System.Drawing.Point(706, 56)
+        Me.ObjName.Name = "ObjName"
+        Me.ObjName.Size = New System.Drawing.Size(27, 20)
+        Me.ObjName.TabIndex = 11
+        Me.ObjName.Visible = False
+        '
+        'OpSrc
+        '
+        Me.OpSrc.Location = New System.Drawing.Point(734, 56)
+        Me.OpSrc.Name = "OpSrc"
+        Me.OpSrc.Size = New System.Drawing.Size(27, 20)
+        Me.OpSrc.TabIndex = 12
+        Me.OpSrc.Visible = False
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(837, 551)
+        Me.Controls.Add(Me.OpSrc)
+        Me.Controls.Add(Me.ObjName)
         Me.Controls.Add(Me.DiskView)
         Me.Controls.Add(Me.FileView)
         Me.Controls.Add(Me.btnGo)
@@ -313,4 +333,6 @@ Partial Class Main
     Friend WithEvents DeleteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenWithToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ObjName As TextBox
+    Friend WithEvents OpSrc As TextBox
 End Class

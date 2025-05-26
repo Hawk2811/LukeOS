@@ -7,6 +7,8 @@ Public Class Main
     Dim appfolder As String = My.Computer.FileSystem.GetParentPath(Application.StartupPath)
     Dim rootfs As String = My.Computer.FileSystem.GetParentPath(appfolder)
     Dim errors As String
+    Dim OpType = ""
+
     Private Sub Panel1_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel1.MouseMove
         If drag Then
             Me.Top = Windows.Forms.Cursor.Position.Y - mousey
@@ -139,7 +141,7 @@ Public Class Main
 
     Private Sub OpenWithToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenWithToolStripMenuItem.Click
         If IO.Directory.Exists(dirURL.Text + "\" + FileView.SelectedItems(0).Text) Then
-            MessageBox.Show("This is a Directory", "System Error")
+            MessageBox.Show("This is a Directory", "File Manager")
         Else
             OpenWith.File = dirURL.Text + "\" + FileView.SelectedItems(0).Text
             OpenWith.rootfs = rootfs
@@ -152,19 +154,62 @@ Public Class Main
     End Sub
 
     Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
-
+        ObjName.Text = FileView.SelectedItems(0).Text
+        OpSrc.Text = dirURL.Text + "\" + FileView.SelectedItems(0).Text
+        OpType = "Copy"
     End Sub
 
     Private Sub CutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem.Click
-
+        ObjName.Text = FileView.SelectedItems(0).Text
+        OpSrc.Text = dirURL.Text + "\" + FileView.SelectedItems(0).Text
+        OpType = "Cut"
     End Sub
 
     Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
-
+        Dim OpDest = dirURL.Text + "\" + ObjName.Text
+        Try
+            If OpType = "Cut" Then
+                If IO.Directory.Exists(OpSrc.Text) Then
+                    IO.Directory.Move(OpSrc.Text, OpDest)
+                    OpSrc.Text = ""
+                    ObjName.Text = ""
+                    OpType = ""
+                Else
+                    IO.File.Move(OpSrc.Text, OpDest)
+                    OpSrc.Text = ""
+                    ObjName.Text = ""
+                    OpType = ""
+                End If
+            Else
+                If IO.Directory.Exists(OpSrc.Text) Then
+                    My.Computer.FileSystem.CopyDirectory(OpSrc.Text, OpDest)
+                    OpSrc.Text = ""
+                    ObjName.Text = ""
+                    OpType = ""
+                Else
+                    IO.File.Copy(OpSrc.Text, OpDest)
+                    OpSrc.Text = ""
+                    ObjName.Text = ""
+                    OpType = ""
+                End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Operation Fail: " + ex.Message, "File Manager")
+        End Try
+        Loadfiles()
     End Sub
 
     Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
-
+        Try
+            If IO.Directory.Exists(dirURL.Text + "\" + FileView.SelectedItems(0).Text) Then
+                IO.Directory.Delete(dirURL.Text + "\" + FileView.SelectedItems(0).Text, True)
+            Else
+                IO.File.Delete(dirURL.Text + "\" + FileView.SelectedItems(0).Text)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error on Deleting: " + ex.Message, "File Manager")
+        End Try
+        Loadfiles()
     End Sub
 
     Public Sub OpenDirFile()
