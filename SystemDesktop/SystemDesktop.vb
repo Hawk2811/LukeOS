@@ -35,9 +35,15 @@ Public Class SystemDesktop
     Public Sub LoadApps()
         Try
             AppList.Items.Clear()
-
+            AppIcons.Images.Clear()
+            AppIcons.ImageSize = New Point(64, 64)
             For ie = 0 To My.Computer.FileSystem.GetDirectories(Application_dir).Count - 1 'List All Folders on LukeOS Applications Folder
-                AppList.Items.Add(My.Computer.FileSystem.GetName(My.Computer.FileSystem.GetDirectories(Application_dir)(ie)), 0)
+                Try
+                    AppIcons.Images.Add(Image.FromFile(Application_dir + "\" + My.Computer.FileSystem.GetName(My.Computer.FileSystem.GetDirectories(Application_dir)(ie)) + "\icon.png"))
+                Catch ex As Exception
+                    AppIcons.Images.Add(Image.FromFile(rootfs + "\System\Icons\executable.png"))
+                End Try
+                AppList.Items.Add(My.Computer.FileSystem.GetName(My.Computer.FileSystem.GetDirectories(Application_dir)(ie)), AppIcons.Images.Count - 1)
             Next
         Catch ex As Exception ' If get a error show a Error Message
             MessageBox.Show("Failed to Load Apps " + ex.Message, "System Error") 'Show a message error if fail
