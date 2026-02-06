@@ -130,6 +130,7 @@ Partial Class SystemDesktop
         '
         'AppList
         '
+        Me.AppList.BackColor = System.Drawing.Color.DodgerBlue
         Me.AppList.HideSelection = False
         Me.AppList.LargeImageList = Me.AppIcons
         Me.AppList.Location = New System.Drawing.Point(3, 43)

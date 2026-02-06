@@ -21,6 +21,7 @@ Public Class SystemDesktop
 
     Private Sub SystemDesktop_Load(sender As Object, e As EventArgs) Handles Me.Load
         LoadApps()
+        AppList_Timer.Start()
         ClockTimer.Start()
     End Sub
 
