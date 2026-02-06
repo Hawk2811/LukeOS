@@ -7,6 +7,7 @@ Imports System.IO
 Module ProgramMain
     Dim RelDebug As String = "1"
     Dim ProjectDirectory As String
+    Dim VersionCode = "0.1"
     Sub Main()
 
         Call SetProjectDirectory()
@@ -47,7 +48,7 @@ Module ProgramMain
             File.Copy(ProjectDirectory + "\BootManager\bin\Debug\BootManager.exe", ProjectDirectory + "\Build\Debug\System\Boot\BootManager.exe")
             File.Copy(ProjectDirectory + "\SystemDesktop\bin\Debug\SystemDesktop.exe", ProjectDirectory + "\Build\Debug\System\SystemDesktop.exe")
             File.Copy(ProjectDirectory + "\File Manager\bin\Debug\File Manager.exe", ProjectDirectory + "\Build\Debug\Apps\File Manager\File Manager.exe")
-
+            File.WriteAllText(ProjectDirectory + "\Build\Debug\System\Config\sysversion.conf", "0.1")
             Console.WriteLine("Build Success!")
             Console.ReadLine()
         Catch ex As Exception
@@ -79,6 +80,7 @@ Module ProgramMain
             File.Copy(ProjectDirectory + "\BootManager\bin\Release\BootManager.exe", ProjectDirectory + "\Build\Release\System\Boot\BootManager.exe")
             File.Copy(ProjectDirectory + "\SystemDesktop\bin\Release\SystemDesktop.exe", ProjectDirectory + "\Build\Release\System\SystemDesktop.exe")
             File.Copy(ProjectDirectory + "\File Manager\bin\Release\File Manager.exe", ProjectDirectory + "\Build\Release\Apps\File Manager\File Manager.exe")
+            File.WriteAllText(ProjectDirectory + "\Build\Release\System\Config\sysversion.conf", "0.1")
             Console.WriteLine("Build Success!")
             Console.ReadLine()
         Catch ex As Exception
