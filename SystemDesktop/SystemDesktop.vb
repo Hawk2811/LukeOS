@@ -73,11 +73,4 @@ Public Class SystemDesktop
             MessageBox.Show("Failed to Start App: " + ex.Message, "System Error")
         End Try
     End Sub
-
-    Private Sub SystemDesktop_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
-        If e.KeyCode = Keys.L AndAlso e.Modifiers = Keys.Alt Then
-            e.Handled = True
-            LoadApps()
-        End If
-    End Sub
 End Class
