@@ -34,7 +34,6 @@ Partial Class SystemDesktop
         Me.AppList = New System.Windows.Forms.ListView()
         Me.AppIcons = New System.Windows.Forms.ImageList(Me.components)
         Me.ClockTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.AppList_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.btn_Shutdown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.App_Panel.SuspendLayout()
@@ -149,10 +148,6 @@ Partial Class SystemDesktop
         'ClockTimer
         '
         '
-        'AppList_Timer
-        '
-        Me.AppList_Timer.Interval = 2000
-        '
         'SystemDesktop
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -182,7 +177,6 @@ Partial Class SystemDesktop
     Friend WithEvents Label1 As Label
     Friend WithEvents AppList As ListView
     Friend WithEvents ClockTimer As Timer
-    Friend WithEvents AppList_Timer As Timer
     Friend WithEvents btn_About As Button
     Friend WithEvents btn_Shutdown As PictureBox
     Friend WithEvents AppIcons As ImageList

@@ -7,11 +7,12 @@ Imports System.IO
 
 
 Public Class SystemDesktop
-
+    Dim IconFile As System.IO.FileStream
     Dim rootfs As String = My.Computer.FileSystem.GetParentPath(Application.StartupPath) 'Set variable to Root FileSystem of LukeOS
     Dim Application_dir As String = rootfs + "\Apps" ' Set variable to Application Directory of LukeOS
 
     Private Sub BtnApps_Click(sender As Object, e As EventArgs) Handles btnApps.Click
+        LoadApps()
         If App_Panel.Visible = True Then 'Show and Hide Application Menu
             App_Panel.Visible = False
         Else
@@ -21,16 +22,11 @@ Public Class SystemDesktop
 
     Private Sub SystemDesktop_Load(sender As Object, e As EventArgs) Handles Me.Load
         LoadApps()
-        AppList_Timer.Start()
         ClockTimer.Start()
     End Sub
 
     Private Sub ClockTimer_Tick(sender As Object, e As EventArgs) Handles ClockTimer.Tick
         lbl_Time.Text = Now.ToString("HH:mm") 'Set Time using Windows Time
-    End Sub
-
-    Private Sub AppList_Timer_Tick(sender As Object, e As EventArgs) Handles AppList_Timer.Tick
-        LoadApps()
     End Sub
 
     Public Sub LoadApps()
@@ -40,7 +36,9 @@ Public Class SystemDesktop
             AppIcons.ImageSize = New Point(64, 64)
             For ie = 0 To My.Computer.FileSystem.GetDirectories(Application_dir).Count - 1 'List All Folders on LukeOS Applications Folder
                 Try
-                    AppIcons.Images.Add(Image.FromFile(Application_dir + "\" + My.Computer.FileSystem.GetName(My.Computer.FileSystem.GetDirectories(Application_dir)(ie)) + "\app_icon.png"))
+                    IconFile = New System.IO.FileStream(Application_dir + "\" + My.Computer.FileSystem.GetName(My.Computer.FileSystem.GetDirectories(Application_dir)(ie)) + "\app_icon.png", IO.FileMode.Open, IO.FileAccess.Read)
+                    AppIcons.Images.Add(Image.FromStream(IconFile))
+                    IconFile.Close()
                 Catch ex As Exception
                     AppIcons.Images.Add(Image.FromFile(rootfs + "\System\Icons\executable.png"))
                 End Try
@@ -74,5 +72,12 @@ Public Class SystemDesktop
         Catch ex As Exception 'If Cause unknown error
             MessageBox.Show("Failed to Start App: " + ex.Message, "System Error")
         End Try
+    End Sub
+
+    Private Sub SystemDesktop_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.L AndAlso e.Modifiers = Keys.Alt Then
+            e.Handled = True
+            LoadApps()
+        End If
     End Sub
 End Class
