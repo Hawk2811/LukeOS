@@ -31,11 +31,11 @@ Public Class SystemDesktop
 
     Public Sub LoadApps()
         Try
-            AppList.Items.Clear()
+            AppList.Items.Clear() 'Clear AppList and AppIcons
             AppIcons.Images.Clear()
             AppIcons.ImageSize = New Point(64, 64)
             For ie = 0 To My.Computer.FileSystem.GetDirectories(Application_dir).Count - 1 'List All Folders on LukeOS Applications Folder
-                Try
+                Try 'Try Load App Icon
                     IconFile = New System.IO.FileStream(Application_dir + "\" + My.Computer.FileSystem.GetName(My.Computer.FileSystem.GetDirectories(Application_dir)(ie)) + "\app_icon.png", IO.FileMode.Open, IO.FileAccess.Read)
                     AppIcons.Images.Add(Image.FromStream(IconFile))
                     IconFile.Close()
