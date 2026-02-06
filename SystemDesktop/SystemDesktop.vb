@@ -39,7 +39,7 @@ Public Class SystemDesktop
             AppIcons.ImageSize = New Point(64, 64)
             For ie = 0 To My.Computer.FileSystem.GetDirectories(Application_dir).Count - 1 'List All Folders on LukeOS Applications Folder
                 Try
-                    AppIcons.Images.Add(Image.FromFile(Application_dir + "\" + My.Computer.FileSystem.GetName(My.Computer.FileSystem.GetDirectories(Application_dir)(ie)) + "\icon.png"))
+                    AppIcons.Images.Add(Image.FromFile(Application_dir + "\" + My.Computer.FileSystem.GetName(My.Computer.FileSystem.GetDirectories(Application_dir)(ie)) + "\app_icon.png"))
                 Catch ex As Exception
                     AppIcons.Images.Add(Image.FromFile(rootfs + "\System\Icons\executable.png"))
                 End Try
