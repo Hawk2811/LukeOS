@@ -32,9 +32,8 @@ Partial Class SystemDesktop
         Me.btn_About = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.AppList = New System.Windows.Forms.ListView()
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.AppIcons = New System.Windows.Forms.ImageList(Me.components)
         Me.ClockTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.AppList_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.btn_Shutdown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.App_Panel.SuspendLayout()
@@ -130,28 +129,24 @@ Partial Class SystemDesktop
         '
         'AppList
         '
-        Me.AppList.BackColor = System.Drawing.Color.Cyan
+        Me.AppList.BackColor = System.Drawing.Color.DodgerBlue
         Me.AppList.HideSelection = False
-        Me.AppList.LargeImageList = Me.ImageList1
+        Me.AppList.LargeImageList = Me.AppIcons
         Me.AppList.Location = New System.Drawing.Point(3, 43)
         Me.AppList.Name = "AppList"
         Me.AppList.Size = New System.Drawing.Size(421, 292)
-        Me.AppList.SmallImageList = Me.ImageList1
+        Me.AppList.SmallImageList = Me.AppIcons
         Me.AppList.TabIndex = 0
         Me.AppList.UseCompatibleStateImageBehavior = False
         '
-        'ImageList1
+        'AppIcons
         '
-        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "file-exe-icon_34440.png")
+        Me.AppIcons.ImageStream = CType(resources.GetObject("AppIcons.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.AppIcons.TransparentColor = System.Drawing.Color.Transparent
+        Me.AppIcons.Images.SetKeyName(0, "file-exe-icon_34440.png")
         '
         'ClockTimer
         '
-        '
-        'AppList_Timer
-        '
-        Me.AppList_Timer.Interval = 2000
         '
         'SystemDesktop
         '
@@ -182,8 +177,7 @@ Partial Class SystemDesktop
     Friend WithEvents Label1 As Label
     Friend WithEvents AppList As ListView
     Friend WithEvents ClockTimer As Timer
-    Friend WithEvents AppList_Timer As Timer
     Friend WithEvents btn_About As Button
     Friend WithEvents btn_Shutdown As PictureBox
-    Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents AppIcons As ImageList
 End Class

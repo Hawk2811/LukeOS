@@ -7,11 +7,12 @@ Imports System.IO
 
 
 Public Class SystemDesktop
-
+    Dim IconFile As System.IO.FileStream
     Dim rootfs As String = My.Computer.FileSystem.GetParentPath(Application.StartupPath) 'Set variable to Root FileSystem of LukeOS
     Dim Application_dir As String = rootfs + "\Apps" ' Set variable to Application Directory of LukeOS
 
     Private Sub BtnApps_Click(sender As Object, e As EventArgs) Handles btnApps.Click
+        LoadApps()
         If App_Panel.Visible = True Then 'Show and Hide Application Menu
             App_Panel.Visible = False
         Else
@@ -28,16 +29,20 @@ Public Class SystemDesktop
         lbl_Time.Text = Now.ToString("HH:mm") 'Set Time using Windows Time
     End Sub
 
-    Private Sub AppList_Timer_Tick(sender As Object, e As EventArgs) Handles AppList_Timer.Tick
-        LoadApps()
-    End Sub
-
     Public Sub LoadApps()
         Try
-            AppList.Items.Clear()
-
+            AppList.Items.Clear() 'Clear AppList and AppIcons
+            AppIcons.Images.Clear()
+            AppIcons.ImageSize = New Point(64, 64)
             For ie = 0 To My.Computer.FileSystem.GetDirectories(Application_dir).Count - 1 'List All Folders on LukeOS Applications Folder
-                AppList.Items.Add(My.Computer.FileSystem.GetName(My.Computer.FileSystem.GetDirectories(Application_dir)(ie)), 0)
+                Try 'Try Load App Icon
+                    IconFile = New System.IO.FileStream(Application_dir + "\" + My.Computer.FileSystem.GetName(My.Computer.FileSystem.GetDirectories(Application_dir)(ie)) + "\app_icon.png", IO.FileMode.Open, IO.FileAccess.Read)
+                    AppIcons.Images.Add(Image.FromStream(IconFile))
+                    IconFile.Close()
+                Catch ex As Exception
+                    AppIcons.Images.Add(Image.FromFile(rootfs + "\System\Icons\executable.png"))
+                End Try
+                AppList.Items.Add(My.Computer.FileSystem.GetName(My.Computer.FileSystem.GetDirectories(Application_dir)(ie)), AppIcons.Images.Count - 1)
             Next
         Catch ex As Exception ' If get a error show a Error Message
             MessageBox.Show("Failed to Load Apps " + ex.Message, "System Error") 'Show a message error if fail
